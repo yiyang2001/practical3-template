@@ -12,41 +12,50 @@ function detectInputError()
 
     // num1 ///////////////////////////////////////////////////////////////////
     // Replace the true to appricate condition according to the message
+    // Check if the num1 is empty.
     if (true)
     {
         $error['num1'] = 'Please enter <strong>Number 1</strong>.';
     }
     // Chapter 2-3 PHP Working with Strings : Slide 45
+    // check if the num is not an integer
     else if (true)
     {
         $error['num1'] = '<strong>Number 1</strong> must be an integer.';
     }
+    // check if the num is too large or too small that exceed the limit of integer
     else if ($num1 < (-PHP_INT_MAX - 1) || $num1 > PHP_INT_MAX)
     {
         // NOTE:
         // -----
         // Don't cast $num1 to (int) for the comparison.
-        // When casted to (int), value > PHP_INT_MAX will be set to PHP_INT_MAX.
+        // Why not? Because (int) will truncate the value.
+        // When casted to (int), value > PHP_INT_MAX will be set to PHP_INT_MAX.    
         // E.g. (int)9999999999 --> 2147483647 --> PHP_INT_MAX.
+        // E.g. 32-bit system (int)-2147483647 --> 2147483647 --> PHP_INT_MAX. OR 64-bit system -9223372036854775807 --> 9223372036854775807
         // Leave $num1 as (string).
         $error['num1'] = '<strong>Number 1</strong> must between ' . (-PHP_INT_MAX - 1) . ' and ' . PHP_INT_MAX . '.';
     }
 
     // num2 ///////////////////////////////////////////////////////////////////
-    // Replace the true to appricate condition according to the message
+    // Replace the "true" to appricate condition according to the message
+    // Check if the num2 is empty.
     if (true)
     {
         $error['num2'] = 'Please enter <strong>Number 2</strong>.';
     }
     // Chapter 2-3 PHP Working with Strings : Slide 45
+    // check if the num is not an integer
     else if (true)
     {
         $error['num2'] = '<strong>Number 2</strong> must be an integer.';
     }
+    // check if the num is too large or too small that exceed the limit of integer
     else if ($num2 < (-PHP_INT_MAX - 1) || $num2 > PHP_INT_MAX)
     {
         $error['num2'] = '<strong>Number 2</strong> must between ' . (-PHP_INT_MAX - 1) . ' and ' . PHP_INT_MAX . '.';
     }
+    // check if the $_POST['divide'] is set and the num2 is 0
     else if (true)
     {
         $error['num2'] = 'Cannot divide by 0. Change <strong>Number 2</strong>.';
@@ -68,18 +77,18 @@ function detectInputError()
         <h1>Simple Calculator</h1>
         <?php
         // https://www.w3schools.com/php/func_var_empty.asp
-        // Replace the true
+        // Replace the "true"
         if (true) // POST, indicidates a postback.
         {
             // Get value from the POST's associative array (replace ""):
-                // - Trim unwanted whitespaces. (https://www.w3schools.com/php/func_string_trim.asp)
+            // - Trim unwanted whitespaces. (https://www.w3schools.com/php/func_string_trim.asp)
             $num1 = "";
             $num2 = "";
 
             $error = detectInputError();
             // https://www.w3schools.com/php/func_var_empty.asp
-            // Replace the true            
-            if(true) // If there is no error.
+            // Replace the "true"            
+            if(true) // Check if there is no error.
             {
                 // Cast the $num1 and $num2 to integer (replace "")
                 $n1 = "";
@@ -177,7 +186,9 @@ function detectInputError()
             // Error. Focus on 1st error field.
             // https://www.w3schools.com/php/func_array_reset.asp
             // https://www.w3schools.com/php/func_array_key.asp
-            // Replace the ?
+            // reset() - Return the first element of the array
+            // key()   - Return the key of the current element in an array
+            // Replace the "?" with the correct function to get the first key of the array $error
             echo "
                 var field = document.getElementsByName('?')[0];
                 field.focus();

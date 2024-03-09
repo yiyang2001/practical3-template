@@ -18,13 +18,15 @@ function detectInputError()
     $error = array();
 
     // gender /////////////////////////////////////////////////////////////////
-    // Replace the true to appricate condition according to the message
+    // Replace the "true" to appricate condition according to the message
+    // Check if the gender is not selected.
     if (true)
     {
         $error['gender'] = 'Unisex? Please select your <strong>gender</strong>.';
     }
     // EXTRA: To prevent hacks.
-    // tips use regular expression (preg_match)
+    // tips use regular expression (preg_match) 
+    // Check if the format is not M or F.
     else if (true)
     {
         $error['gender'] = '<strong>Gender</strong> can only be either M or F.';
@@ -32,17 +34,20 @@ function detectInputError()
 
     // name ///////////////////////////////////////////////////////////////////
     // Replace the true to appricate condition according to the message
+    // Check if the name is empty.
     if (true)
     {
         $error['name'] = 'Nameless? Please enter your <strong>name</strong>.';
     }
     // EXTRA: To prevent hacks.
     // https://www.w3schools.com/php/func_string_strlen.asp
+    // Check if the name is more than 30 characters.
     else if (true)
     {
         $error['name'] = 'Your <strong>name</strong> is too long. It must be less than 30 characters.';
     }
     // tips use regular expression (preg_match)
+    // Check if the name contains invalid characters. 
     else if (true)
     {
         $error['name'] = 'There are invalid characters in your <strong>name</strong>.';
@@ -50,12 +55,16 @@ function detectInputError()
 
     // phone //////////////////////////////////////////////////////////////////
     // Replace the true to appricate condition according to the message
+    // Check if the phone is empty.
     if (true)
     {
         $error['phone'] = 'Please enter your <strong>mobile phone</strong> number.';
     }
     // EXTRA: To prevent hacks.
     // tips use regular expression (preg_match)
+    // Check if the phone is not in the format 999-9999999 and starts with 01.
+    // 3 digits, a dash, 7 digits.
+    // starts with 01
     else if (true)
     {
         $error['phone'] = 'Your <strong>mobile phone</strong> number is invalid. Format: 999-9999999 and starts with 01.';
@@ -63,10 +72,12 @@ function detectInputError()
 
     // clubs //////////////////////////////////////////////////////////////////
     // Replace the true to appricate condition according to the message
+    // Check if the clubs is not selected.
     if (true)
     {
         $error['clubs'] = 'Please select <strong>clubs</strong> that you want to join.';
     }
+    // Check if the clubs is more than 3.
     else if (true)
     {
         $error['clubs'] = 'You cannot select more than 3 <strong>clubs</strong>.';
@@ -75,6 +86,7 @@ function detectInputError()
     // https://www.w3schools.com/php/func_array_diff.asp
     // https://www.w3schools.com/php/func_array_keys.asp
     // Detect the clubs that not inside the selection
+    // Use array_diff() to find the difference between the two arrays.
     else if (true)
     {
         $error['clubs'] = 'You have selected invalid <strong>clubs</strong>.';
@@ -82,13 +94,16 @@ function detectInputError()
 
     // gender-clubs ///////////////////////////////////////////////////////////
     // Replace the true to appricate condition according to the message
+    // Check if gender and clubs are not null.
     if ($gender != null && $clubs != null)
     {
         // https://www.w3schools.com/php/func_array_in_array.asp
+        // Check if the gender Male selected is not allowed to join the Ladies clubs.
         if (true)
         {
             $error['gender-clubs'] = 'Sorry. Males are not allowed to join the <strong>Ladies Club</strong>.';
         }
+        // Check if the gender Female selected is not allowed to join the Gentlemen Clun.
         else if (true)
         {
             $error['gender-clubs'] = 'Sorry. Females are not allowed to join the <strong>Gentlemen Club</strong>.';
@@ -111,20 +126,20 @@ function detectInputError()
         <?php
         // https://www.w3schools.com/php/func_var_isset.asp
         // https://www.w3schools.com/Php/php_superglobals_post.asp
-        // Replace the true
+        // Replace the "true" 
         if (true) // POST with submit button pressed.
         {
             // Get value from the POST's associative array (replace ""):
-                // - Trim unwanted whitespaces. (https://www.w3schools.com/php/func_string_trim.asp)
-            $gender = "";
+            // - Trim unwanted whitespaces. (https://www.w3schools.com/php/func_string_trim.asp)
+            $gender = ""; 
             $name   = "";
             $phone  = "";
             $clubs  = ""; // It is an array.
 
             $error = detectInputError();
             // https://www.w3schools.com/php/func_var_empty.asp
-            // Replace the true
-            if (true) // If there is no error.
+            // Replace the "true" to check if there is no error.
+            if (true) 
             {
                 // Print the Thanks for joining message
                 // HTML Code (? symbol should be replaced by other character):
